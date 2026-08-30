@@ -51,6 +51,13 @@ async function makeAdmin(email) {
   console.log(`Admin flag set for ${email} (uid ${user.uid}).`);
 }
 
+async function removeAdmin(email) {
+  const user = await getAuth().getUserByEmail(email);
+  const ref = db.collection("users").doc(user.uid);
+  await ref.set({ admin: false }, { merge: true });
+  console.log(`Admin flag removed for ${email} (uid ${user.uid}).`);
+}
+
 async function listUsers() {
   const list = await getAuth().listUsers(100);
   if (list.users.length === 0) {
@@ -101,12 +108,14 @@ try {
     await importArcades();
   } else if (args[0] === "--make-admin" && args[1]) {
     await makeAdmin(args[1]);
+  } else if (args[0] === "--remove-admin" && args[1]) {
+    await removeAdmin(args[1]);
   } else if (args[0] === "--list-users") {
     await listUsers();
   } else if (args[0] === "--publish-rules") {
     await publishRules();
   } else {
-    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>\n  node scripts/seed-firestore.mjs --list-users\n  node scripts/seed-firestore.mjs --publish-rules");
+    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>\n  node scripts/seed-firestore.mjs --remove-admin <email>\n  node scripts/seed-firestore.mjs --list-users\n  node scripts/seed-firestore.mjs --publish-rules");
   }
 } catch (err) {
   console.error(err?.message || err);

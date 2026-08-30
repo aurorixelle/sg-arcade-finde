@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "users": "node scripts/seed-firestore.mjs --list-users",
+    "admin:grant": "node scripts/seed-firestore.mjs --make-admin",
+    "admin:revoke": "node scripts/seed-firestore.mjs --remove-admin",
+    "data:import": "node scripts/seed-firestore.mjs --import",
+    "rules:publish": "node scripts/seed-firestore.mjs --publish-rules"
   },
   "dependencies": {
     "firebase": "^12.18.0",

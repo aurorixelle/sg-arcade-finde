@@ -51,6 +51,33 @@ Then register in the app, verify the email, log in, and the 管理 tab appears
 for the admin account. All visitors see data updates in real time (Firestore
 `onSnapshot`); writes are limited to admins by the security rules.
 
+## Managing admin accounts 自助管理管理员
+
+Prerequisite: `scripts/service-account.json` present (kept forever, never committed).
+
+From the project directory (`C:\Users\Lenovo\Projects\sg-arcade-finder`):
+
+```bash
+npm run users                      # list all accounts: email / verified / admin / favorites
+npm run admin:grant -- a@b.com     # grant admin to an existing, logged-in-once account
+npm run admin:revoke -- a@b.com    # remove admin
+```
+
+Equivalent raw commands: `node scripts/seed-firestore.mjs --make-admin a@b.com`
+etc. The change takes effect on the user's next page refresh — no redeploy needed.
+
+Manual fallback via Firebase console (no local files needed):
+1. **Authentication → Users** — find the account, copy its **UID**
+2. **Firestore Database → Data → `users` collection → `{uid}` document**
+3. Add/edit boolean field `admin` → `true` (or `false` to revoke) → save
+
+Note: a `users/{uid}` document is created the first time an account logs in,
+so grant admin only after the person has logged in once.
+
+`node scripts/test-rules.mjs` — end-to-end rules self-check: creates a throwaway
+account, verifies a signed-in user can read their profile and that non-admins
+cannot write arcade data, then cleans up.
+
 ## Refreshing the data snapshot
 
 When the Google Sheet changes, regenerate `src/data/arcades.json`:
