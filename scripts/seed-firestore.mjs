@@ -57,8 +57,13 @@ async function listUsers() {
     console.log("No registered users yet.");
     return;
   }
+  // join with Firestore profile docs to show admin flags
+  const profiles = {};
+  const snap = await db.collection("users").get();
+  for (const d of snap.docs) profiles[d.id] = d.data();
   for (const u of list.users) {
-    console.log(`  ${u.email}  verified=${u.emailVerified}  uid=${u.uid}`);
+    const p = profiles[u.uid] || {};
+    console.log(`  ${u.email}  verified=${u.emailVerified}  admin=${p.admin === true}  favorites=${(p.favorites || []).length}`);
   }
 }
 
