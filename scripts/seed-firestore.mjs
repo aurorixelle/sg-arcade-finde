@@ -10,7 +10,7 @@ import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { initializeApp, cert } from "firebase-admin/app";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth } from "firebase-admin/auth";
 
@@ -67,6 +67,34 @@ async function listUsers() {
   }
 }
 
+// Publish firestore.rules via the Firebase Rules API, using the Admin SDK's own
+// credential (it already proves token minting works — Firestore seeding used it).
+async function publishRules() {
+  const content = await readFile(path.join(ROOT, "firestore.rules"), "utf8");
+  const sa = JSON.parse(await readFile(KEY_PATH, "utf8"));
+  const projectId = sa.project_id;
+
+  const app = getApps()[0];
+  // note: the Admin SDK credential returns { access_token } (snake_case)
+  const { access_token: token } = await app.options.credential.getAccessToken();
+  const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+
+  const rulesetRes = await fetch(
+    `https://firebaserules.googleapis.com/v1/projects/${projectId}/rulesets`,
+    { method: "POST", headers, body: JSON.stringify({ source: { files: [{ name: "firestore.rules", content }] } }) }
+  );
+  if (!rulesetRes.ok) throw new Error(`create ruleset failed: HTTP ${rulesetRes.status} ${await rulesetRes.text()}`);
+  const { name: rulesetName } = await rulesetRes.json();
+
+  // PATCH creates or updates the release attached to Cloud Firestore
+  const releaseRes = await fetch(
+    `https://firebaserules.googleapis.com/v1/projects/${projectId}/releases/cloud.firestore`,
+    { method: "PATCH", headers, body: JSON.stringify({ name: "cloud.firestore", rulesetName }) }
+  );
+  if (!releaseRes.ok) throw new Error(`update release failed: HTTP ${releaseRes.status} ${await releaseRes.text()}`);
+  console.log(`Rules published: ${rulesetName} -> release cloud.firestore`);
+}
+
 const [,, ...args] = process.argv;
 try {
   if (args[0] === "--import") {
@@ -75,9 +103,12 @@ try {
     await makeAdmin(args[1]);
   } else if (args[0] === "--list-users") {
     await listUsers();
+  } else if (args[0] === "--publish-rules") {
+    await publishRules();
   } else {
-    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>\n  node scripts/seed-firestore.mjs --list-users");
+    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>\n  node scripts/seed-firestore.mjs --list-users\n  node scripts/seed-firestore.mjs --publish-rules");
   }
-} finally {
-  process.exit(0);
+} catch (err) {
+  console.error(err?.message || err);
+  process.exit(1);
 }

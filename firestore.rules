@@ -14,10 +14,12 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Per-user profile (favorites + admin flag). Users can only touch their own
-    // doc, and can never grant themselves admin.
+    // Per-user profile (favorites + admin flag). Owners can read their own doc
+    // (read has no request.resource — that's write-only). On writes, users can
+    // never grant themselves admin.
     match /users/{uid} {
-      allow read, update, delete: if request.auth != null && request.auth.uid == uid
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow update, delete: if request.auth != null && request.auth.uid == uid
         && (!request.resource.data.hasOwnProperty('admin')
             || request.resource.data.admin == resource.data.admin);
       allow create: if request.auth != null && request.auth.uid == uid
