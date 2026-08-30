@@ -8,11 +8,12 @@
 
 import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { initializeApp, cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from "firebase-admin/auth";
 
-const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const KEY_PATH = path.join(ROOT, "scripts", "service-account.json");
 
@@ -22,11 +23,9 @@ if (!existsSync(KEY_PATH)) {
   process.exit(1);
 }
 
-const admin = require("firebase-admin");
-const serviceAccount = JSON.parse(await readFile(KEY_PATH, "utf8"));
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+initializeApp({ credential: cert(JSON.parse(await readFile(KEY_PATH, "utf8"))) });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 function slugify(name) {
   return String(name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
@@ -46,10 +45,21 @@ async function importArcades() {
 }
 
 async function makeAdmin(email) {
-  const user = await admin.auth().getUserByEmail(email);
+  const user = await getAuth().getUserByEmail(email);
   const ref = db.collection("users").doc(user.uid);
   await ref.set({ admin: true }, { merge: true });
   console.log(`Admin flag set for ${email} (uid ${user.uid}).`);
+}
+
+async function listUsers() {
+  const list = await getAuth().listUsers(100);
+  if (list.users.length === 0) {
+    console.log("No registered users yet.");
+    return;
+  }
+  for (const u of list.users) {
+    console.log(`  ${u.email}  verified=${u.emailVerified}  uid=${u.uid}`);
+  }
 }
 
 const [,, ...args] = process.argv;
@@ -58,8 +68,10 @@ try {
     await importArcades();
   } else if (args[0] === "--make-admin" && args[1]) {
     await makeAdmin(args[1]);
+  } else if (args[0] === "--list-users") {
+    await listUsers();
   } else {
-    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>");
+    console.log("Usage:\n  node scripts/seed-firestore.mjs --import\n  node scripts/seed-firestore.mjs --make-admin <email>\n  node scripts/seed-firestore.mjs --list-users");
   }
 } finally {
   process.exit(0);

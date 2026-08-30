@@ -17,6 +17,8 @@ scripts/.geocache.json
 
 # Firebase service account key — NEVER commit this
 scripts/service-account.json
+scripts/s.json
+scripts/*firebase-adminsdk*.json
 
 # Editor directories and files
 .vscode/*
