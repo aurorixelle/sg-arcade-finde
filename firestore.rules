@@ -1,0 +1,27 @@
+rules_version = '2';
+// Paste into Firebase console → Firestore Database → Rules → Publish
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin == true;
+    }
+
+    // Arcade directory: public read, admin-only write
+    match /arcades/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Per-user profile (favorites + admin flag). Users can only touch their own
+    // doc, and can never grant themselves admin.
+    match /users/{uid} {
+      allow read, update, delete: if request.auth != null && request.auth.uid == uid
+        && (!request.resource.data.hasOwnProperty('admin')
+            || request.resource.data.admin == resource.data.admin);
+      allow create: if request.auth != null && request.auth.uid == uid
+        && !request.resource.data.hasOwnProperty('admin');
+    }
+  }
+}

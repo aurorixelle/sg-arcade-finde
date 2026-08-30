@@ -15,6 +15,9 @@ dist-ssr
 # OneMap geocode cache (regenerated locally)
 scripts/.geocache.json
 
+# Firebase service account key — NEVER commit this
+scripts/service-account.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

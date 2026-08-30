@@ -1,7 +1,7 @@
 import { GAMES, CHAIN_COLORS } from "../constants.js";
 import { formatDistance } from "../utils/geo.js";
 
-export default function ArcadeCard({ arcade, distance, selected, onSelect }) {
+export default function ArcadeCard({ arcade, distance, selected, onSelect, isFavorite, onToggleFavorite }) {
   const chainColor = CHAIN_COLORS[arcade.chain] || "#64748b";
   const available = GAMES.filter((g) => arcade.games[g.key] > 0);
 
@@ -14,6 +14,20 @@ export default function ArcadeCard({ arcade, distance, selected, onSelect }) {
     >
       <header>
         <h3>{arcade.branch}</h3>
+        {onToggleFavorite && (
+          <button
+            type="button"
+            className={`fav-btn ${isFavorite ? "active" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite();
+            }}
+            aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+            title={isFavorite ? "取消收藏" : "收藏"}
+          >
+            {isFavorite ? "❤" : "♡"}
+          </button>
+        )}
         <span className="chain-badge" style={{ background: chainColor }}>
           {arcade.chain}
         </span>

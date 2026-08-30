@@ -76,7 +76,7 @@ export default function MapView({
 
       {positioned.map((a) => (
         <Marker
-          key={a.name}
+          key={a.id ?? a.name}
           position={[a.posLat, a.posLng]}
           icon={makeIcon(a.chain, selected === a.name)}
           eventHandlers={{ click: () => onSelect(a.name) }}
