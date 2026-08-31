@@ -47,11 +47,11 @@ node scripts/seed-firestore.mjs --import
 node scripts/seed-firestore.mjs --make-admin your@email.com
 ```
 
-Then register in the app, verify the email, log in, and the 管理 tab appears
+Then register in the app, verify the email, log in, and the Admin tab appears
 for the admin account. All visitors see data updates in real time (Firestore
 `onSnapshot`); writes are limited to admins by the security rules.
 
-## Managing admin accounts 自助管理管理员
+## Managing admin accounts
 
 Prerequisite: `scripts/service-account.json` present (kept forever, never committed).
 

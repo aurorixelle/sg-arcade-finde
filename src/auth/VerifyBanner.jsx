@@ -10,27 +10,27 @@ export default function VerifyBanner() {
   return (
     <div className="verify-banner">
       <span>
-        📧 验证邮件已发送至 <strong>{user.email}</strong> — 收件并点击链接后即可使用收藏功能。
-        (Verify your email to unlock favorites.)
+        📧 Verification email sent to <strong>{user.email}</strong> — open it and click the
+        link to unlock favorites.
       </span>
       <span className="verify-actions">
         <button
           type="button"
           onClick={async () => {
             await resendVerification();
-            setNotice("已重新发送 Resent — check your inbox");
+            setNotice("Resent — check your inbox");
           }}
         >
-          重发邮件
+          Resend email
         </button>
         <button
           type="button"
           onClick={async () => {
             await refreshUser();
-            setNotice("已刷新状态 Refreshed");
+            setNotice("Refreshed");
           }}
         >
-          我已验证，刷新
+          I've verified — refresh
         </button>
         {notice && <em>{notice}</em>}
       </span>

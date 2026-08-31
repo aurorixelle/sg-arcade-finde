@@ -20,19 +20,19 @@ function friendlyAuthError(error) {
     case "auth/invalid-credential":
     case "auth/wrong-password":
     case "auth/user-not-found":
-      return "邮箱或密码不正确 Email or password is incorrect";
+      return "Email or password is incorrect";
     case "auth/email-already-in-use":
-      return "该邮箱已注册 Email already registered";
+      return "Email already registered";
     case "auth/weak-password":
-      return "密码至少 6 位 Password must be at least 6 characters";
+      return "Password must be at least 6 characters";
     case "auth/invalid-email":
-      return "邮箱格式无效 Invalid email address";
+      return "Invalid email address";
     case "auth/too-many-requests":
-      return "尝试次数过多，请稍后再试 Too many attempts, try again later";
+      return "Too many attempts — try again later";
     case "auth/network-request-failed":
-      return "网络错误 Network error — check your connection";
+      return "Network error — check your connection";
     default:
-      return error?.message?.replace("Firebase: ", "") || "未知错误 Unknown error";
+      return error?.message?.replace("Firebase: ", "") || "Unknown error";
   }
 }
 

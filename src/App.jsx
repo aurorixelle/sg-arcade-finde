@@ -155,16 +155,16 @@ function Layout() {
 
           <div className="auth-zone">
             {!firebaseReady ? (
-              <span className="dim-note">账户系统未配置（快照模式）</span>
+              <span className="dim-note">Accounts not configured (snapshot mode)</span>
             ) : !user ? (
               <button type="button" className="login-btn" onClick={() => setShowAuth(true)}>
-                登录 / 注册
+                Sign in / Register
               </button>
             ) : (
               <>
-                <span className="user-email" title={verified ? "已验证" : "邮箱未验证"}>
+                <span className="user-email" title={verified ? "Verified" : "Email not verified"}>
                   {user.email}
-                  {!verified && <em>（未验证）</em>}
+                  {!verified && <em>(unverified)</em>}
                 </span>
                 {isAdmin && (
                   <button
@@ -172,7 +172,7 @@ function Layout() {
                     className={`view-tab-btn ${view === "admin" ? "active" : ""}`}
                     onClick={() => setView(view === "admin" ? "browse" : "admin")}
                   >
-                    管理
+                    Admin
                   </button>
                 )}
                 {verified && (
@@ -180,13 +180,13 @@ function Layout() {
                     type="button"
                     className={`fav-toggle ${favoritesOnly ? "active" : ""}`}
                     onClick={() => setFavoritesOnly(!favoritesOnly)}
-                    title="只看收藏 Favorites only"
+                    title="Favorites only"
                   >
                     ❤ {favorites.length}
                   </button>
                 )}
                 <button type="button" className="clear-btn" onClick={signOut}>
-                  登出
+                  Sign out
                 </button>
               </>
             )}
@@ -236,7 +236,7 @@ function Layout() {
                 {results.length} arcade{results.length === 1 ? "" : "s"}
                 {radius && userPos ? ` within ${radius / 1000} km` : ""}
                 {(region || planningArea || chain || selectedGames.size > 0 || favoritesOnly) && " (filtered)"}
-                {source === "firestore" && <span className="live-dot" title="实时数据 Firestore live">● live</span>}
+                {source === "firestore" && <span className="live-dot" title="Live data from Firestore">● live</span>}
               </div>
               {results.length === 0 && (
                 <p className="empty-state">

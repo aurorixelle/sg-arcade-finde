@@ -29,7 +29,7 @@ export default function FilterBar({
     <div className="filter-bar">
       <div className="filter-row">
         <label className="filter-field">
-          <span>Region 区域</span>
+          <span>Region</span>
           <select value={region} onChange={(e) => onRegionChange(e.target.value)}>
             <option value="">All regions</option>
             {REGIONS.map((r) => (
@@ -39,7 +39,7 @@ export default function FilterBar({
         </label>
 
         <label className="filter-field">
-          <span>Planning Area 规划区</span>
+          <span>Planning Area</span>
           <select value={planningArea} onChange={(e) => onPlanningAreaChange(e.target.value)}>
             <option value="">All areas</option>
             {areaOptions.map((a) => (
@@ -49,7 +49,7 @@ export default function FilterBar({
         </label>
 
         <label className="filter-field">
-          <span>Arcade Chain 连锁</span>
+          <span>Arcade Chain</span>
           <select value={chain} onChange={(e) => onChainChange(e.target.value)}>
             <option value="">All chains</option>
             {chains.map((c) => (
@@ -60,7 +60,7 @@ export default function FilterBar({
       </div>
 
       <div className="filter-row">
-        <span className="filter-field-label">Games 游戏</span>
+        <span className="filter-field-label">Games</span>
         <div className="game-chips">
           {GAMES.map((g) => {
             const active = selectedGames.has(g.key);

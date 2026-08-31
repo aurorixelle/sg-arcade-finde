@@ -23,7 +23,7 @@ export default function ArcadeCard({ arcade, distance, selected, onSelect, isFav
               onToggleFavorite();
             }}
             aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-            title={isFavorite ? "取消收藏" : "收藏"}
+            title={isFavorite ? "Remove from favorites" : "Add to favorites"}
           >
             {isFavorite ? "❤" : "♡"}
           </button>

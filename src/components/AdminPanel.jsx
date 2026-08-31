@@ -72,10 +72,10 @@ function ArcadeForm({ initial, onDone, onCancel }) {
         extraGames: form.extraGames.split(/,\s*/).map((s) => s.trim()).filter(Boolean),
       };
       if (!record.name || !record.postal || !record.planningArea) {
-        throw new Error("名称、邮编、规划区必填 Name, postal, planning area are required");
+        throw new Error("Name, postal, and planning area are required");
       }
       if (!Number.isFinite(record.lat) || !Number.isFinite(record.lng)) {
-        throw new Error("经纬度无效 Invalid lat/lng");
+        throw new Error("Invalid latitude/longitude");
       }
       const id = initial?.id ?? slugify(record.name);
       await setDoc(doc(db, "arcades", id), record);
@@ -90,50 +90,50 @@ function ArcadeForm({ initial, onDone, onCancel }) {
   return (
     <form className="admin-form" onSubmit={handleSave}>
       <div className="admin-form-head">
-        <h3>{isNew ? "新增街机厅 New arcade" : `编辑 ${initial.branch}`}</h3>
-        <button type="button" className="clear-btn" onClick={onCancel}>← 返回列表</button>
+        <h3>{isNew ? "New arcade" : `Edit ${initial.branch}`}</h3>
+        <button type="button" className="clear-btn" onClick={onCancel}>← Back to list</button>
       </div>
 
       <div className="admin-grid">
-        <label><span>名称 Name *</span>
+        <label><span>Name *</span>
           <input required value={form.name} onChange={set("name")} placeholder="Virtualand – Bugis+" /></label>
-        <label><span>连锁 Chain</span>
+        <label><span>Chain</span>
           <select value={form.chain} onChange={set("chain")}>
             {Object.keys(CHAIN_COLORS).map((c) => <option key={c}>{c}</option>)}
           </select></label>
-        <label><span>分店 Branch</span>
+        <label><span>Branch</span>
           <input value={form.branch} onChange={set("branch")} placeholder="Bugis+" /></label>
-        <label><span>邮编 Postal *</span>
+        <label><span>Postal *</span>
           <input required value={form.postal} onChange={set("postal")} placeholder="188067" /></label>
-        <label><span>区域 Region</span>
+        <label><span>Region</span>
           <select value={form.region} onChange={set("region")}>
             {REGIONS.map((r) => <option key={r}>{r}</option>)}
           </select></label>
-        <label><span>规划区 Planning Area *</span>
+        <label><span>Planning Area *</span>
           <input required value={form.planningArea} onChange={set("planningArea")} placeholder="Downtown Core" /></label>
-        <label><span>纬度 Latitude</span>
+        <label><span>Latitude</span>
           <input type="number" step="any" value={form.lat} onChange={set("lat")} /></label>
-        <label><span>经度 Longitude</span>
+        <label><span>Longitude</span>
           <input type="number" step="any" value={form.lng} onChange={set("lng")} /></label>
-        <label className="span-2"><span>地址 Address</span>
+        <label className="span-2"><span>Address</span>
           <input value={form.address} onChange={set("address")} placeholder="201 Victoria St #05-04" /></label>
-        <label className="span-2"><span>MRT（可多行）</span>
+        <label className="span-2"><span>MRT (multiple lines allowed)</span>
           <textarea rows={2} value={form.mrt} onChange={set("mrt")} placeholder="EW12/DT14 Bugis (Exit C)" /></label>
-        <label className="span-2"><span>营业时间（每行一条）</span>
+        <label className="span-2"><span>Operating hours (one per line)</span>
           <textarea rows={4} value={form.hours} onChange={set("hours")} placeholder={"11:30am - 10pm (Mon - Thu)\n11am - 11pm (Fri & Sat)"} /></label>
-        <label className="span-2"><span>遮蔽步道备注 Sheltered note</span>
-          <input value={form.shelteredNote} onChange={set("shelteredNote")} placeholder="bus from Pasir Ris Int（可空）" /></label>
+        <label className="span-2"><span>Sheltered note</span>
+          <input value={form.shelteredNote} onChange={set("shelteredNote")} placeholder="bus from Pasir Ris Int (optional)" /></label>
       </div>
 
       <div className="admin-checks">
-        <label><input type="checkbox" checked={form.sheltered} onChange={set("sheltered")} /> 遮蔽步道 Sheltered</label>
-        <label><input type="checkbox" checked={form.mayOpenLate} onChange={set("mayOpenLate")} /> 可能晚开 May open late</label>
-        <label><input type="checkbox" checked={form.higherPricing} onChange={set("higherPricing")} /> 高价 maimai Higher pricing</label>
-        <label><input type="checkbox" checked={form.yenMedals} onChange={set("yenMedals")} /> 收日元 medal Yen medals</label>
+        <label><input type="checkbox" checked={form.sheltered} onChange={set("sheltered")} /> Sheltered walkway</label>
+        <label><input type="checkbox" checked={form.mayOpenLate} onChange={set("mayOpenLate")} /> May open late</label>
+        <label><input type="checkbox" checked={form.higherPricing} onChange={set("higherPricing")} /> Higher maimai pricing</label>
+        <label><input type="checkbox" checked={form.yenMedals} onChange={set("yenMedals")} /> Accepts yen medals</label>
       </div>
 
       <fieldset className="admin-games">
-        <legend>机台数 Cab count</legend>
+        <legend>Cabinet count</legend>
         {GAMES.map((g) => (
           <label key={g.key}>
             <span>{g.label}</span>
@@ -145,13 +145,13 @@ function ArcadeForm({ initial, onDone, onCancel }) {
         ))}
       </fieldset>
 
-      <label className="admin-extra"><span>其他游戏（逗号分隔）Other games</span>
+      <label className="admin-extra"><span>Other games (comma-separated)</span>
         <input value={form.extraGames} onChange={set("extraGames")} placeholder="Reflec Beat, Nostalgia" /></label>
 
       {error && <p className="form-error">{error}</p>}
       <div className="admin-actions">
-        <button type="submit" className="submit-btn" disabled={busy}>{busy ? "保存中…" : "保存 Save"}</button>
-        <button type="button" className="clear-btn" onClick={onCancel}>取消</button>
+        <button type="submit" className="submit-btn" disabled={busy}>{busy ? "Saving…" : "Save"}</button>
+        <button type="button" className="clear-btn" onClick={onCancel}>Cancel</button>
       </div>
     </form>
   );
@@ -162,7 +162,7 @@ export default function AdminPanel({ arcades, onExit }) {
   const [error, setError] = useState(null);
 
   async function handleDelete(a) {
-    if (!window.confirm(`确定删除 Delete "${a.name}"？`)) return;
+    if (!window.confirm(`Delete "${a.name}"?`)) return;
     try {
       await deleteDoc(doc(db, "arcades", a.id));
     } catch (err) {
@@ -186,17 +186,17 @@ export default function AdminPanel({ arcades, onExit }) {
   return (
     <section className="admin-panel">
       <div className="admin-form-head">
-        <h2>数据管理 · {arcades.length} arcades</h2>
+        <h2>Manage data · {arcades.length} arcades</h2>
         <div>
-          <button type="button" className="submit-btn" onClick={() => setEditing("new")}>+ 新增 New</button>
-          <button type="button" className="clear-btn" onClick={onExit}>← 返回地图</button>
+          <button type="button" className="submit-btn" onClick={() => setEditing("new")}>+ New</button>
+          <button type="button" className="clear-btn" onClick={onExit}>← Back to map</button>
         </div>
       </div>
       {error && <p className="form-error">{error}</p>}
       <div className="admin-table-wrap">
         <table className="admin-table">
           <thead>
-            <tr><th>名称</th><th>连锁</th><th>区域</th><th>maimai</th><th>CHUNITHM</th><th>其他</th><th></th></tr>
+            <tr><th>Name</th><th>Chain</th><th>Area</th><th>maimai</th><th>CHUNITHM</th><th>Others</th><th></th></tr>
           </thead>
           <tbody>
             {arcades.map((a) => (
@@ -210,8 +210,8 @@ export default function AdminPanel({ arcades, onExit }) {
                   {GAMES.slice(2).filter((g) => a.games[g.key] > 0).map((g) => g.label).join(", ") || "—"}
                 </td>
                 <td className="row-actions">
-                  <button type="button" onClick={() => setEditing(a)}>编辑</button>
-                  <button type="button" className="danger" onClick={() => handleDelete(a)}>删除</button>
+                  <button type="button" onClick={() => setEditing(a)}>Edit</button>
+                  <button type="button" className="danger" onClick={() => handleDelete(a)}>Delete</button>
                 </td>
               </tr>
             ))}

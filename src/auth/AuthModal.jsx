@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useAuth } from "./AuthContext.jsx";
 
 const MODES = {
-  login: { title: "登录 Sign in", cta: "Sign in" },
-  register: { title: "创建账户 Create account", cta: "Sign up" },
-  reset: { title: "重置密码 Reset password", cta: "Send reset email" },
+  login: { title: "Sign in", cta: "Sign in" },
+  register: { title: "Create account", cta: "Sign up" },
+  reset: { title: "Reset password", cta: "Send reset email" },
 };
 
 export default function AuthModal({ initialMode = "login", onClose }) {
@@ -22,7 +22,7 @@ export default function AuthModal({ initialMode = "login", onClose }) {
     setError(null);
     setNotice(null);
     if (mode === "register" && password !== confirm) {
-      setError("两次输入的密码不一致 Passwords do not match");
+      setError("Passwords do not match");
       return;
     }
     setBusy(true);
@@ -32,11 +32,11 @@ export default function AuthModal({ initialMode = "login", onClose }) {
         onClose();
       } else if (mode === "register") {
         await signUp(email, password);
-        setNotice("验证邮件已发送，请查收邮箱（含垃圾邮件夹）。验证后即可收藏。Check your inbox to verify your email.");
+        setNotice("Verification email sent — check your inbox (and spam folder). Verify your email to unlock favorites.");
         setMode("login");
       } else {
         await resetPassword(email);
-        setNotice("重置邮件已发送，请查收。Check your inbox for the reset link.");
+        setNotice("Reset email sent — check your inbox for the reset link.");
       }
     } catch (err) {
       setError(friendlyAuthError(err));
@@ -53,7 +53,7 @@ export default function AuthModal({ initialMode = "login", onClose }) {
 
         <form onSubmit={handleSubmit} className="auth-form">
           <label>
-            <span>Email 邮箱</span>
+            <span>Email</span>
             <input
               type="email"
               required
@@ -66,7 +66,7 @@ export default function AuthModal({ initialMode = "login", onClose }) {
 
           {mode !== "reset" && (
             <label>
-              <span>Password 密码</span>
+              <span>Password</span>
               <input
                 type="password"
                 required
@@ -74,14 +74,14 @@ export default function AuthModal({ initialMode = "login", onClose }) {
                 value={password}
                 autoComplete={mode === "login" ? "current-password" : "new-password"}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="至少 6 位 / min 6 chars"
+                placeholder="min 6 chars"
               />
             </label>
           )}
 
           {mode === "register" && (
             <label>
-              <span>Confirm 确认密码</span>
+              <span>Confirm password</span>
               <input
                 type="password"
                 required
@@ -103,16 +103,16 @@ export default function AuthModal({ initialMode = "login", onClose }) {
         <div className="auth-switch">
           {mode === "login" && (
             <>
-              <button type="button" onClick={() => setMode("reset")}>忘记密码？</button>
+              <button type="button" onClick={() => setMode("reset")}>Forgot password?</button>
               <span>·</span>
-              <button type="button" onClick={() => setMode("register")}>注册新账户</button>
+              <button type="button" onClick={() => setMode("register")}>Create an account</button>
             </>
           )}
           {mode === "register" && (
-            <button type="button" onClick={() => setMode("login")}>已有账户？去登录</button>
+            <button type="button" onClick={() => setMode("login")}>Already have an account? Sign in</button>
           )}
           {mode === "reset" && (
-            <button type="button" onClick={() => setMode("login")}>返回登录</button>
+            <button type="button" onClick={() => setMode("login")}>Back to sign in</button>
           )}
         </div>
       </div>

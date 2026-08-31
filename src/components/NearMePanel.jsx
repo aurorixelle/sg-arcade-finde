@@ -21,7 +21,7 @@ export default function NearMePanel({
             onClick={onLocate}
             disabled={locating}
           >
-            {locating ? "Locating…" : "📍 Use my location 使用我的位置"}
+            {locating ? "Locating…" : "📍 Use my location"}
           </button>
         ) : (
           <>
@@ -39,7 +39,7 @@ export default function NearMePanel({
 
       {userPos && nearest && (
         <div className="nearest-result">
-          <span className="nearest-label">Nearest arcade 最近的街机厅</span>
+          <span className="nearest-label">Nearest arcade</span>
           <strong>{nearest.arcade.name}</strong>
           <span className="nearest-dist">{formatDistance(nearest.distance)}</span>
           <span className="nearest-meta">{nearest.arcade.mrt.split("\n")[0]}</span>
@@ -48,7 +48,7 @@ export default function NearMePanel({
 
       {userPos && (
         <div className="radius-controls">
-          <span className="radius-label">Within 范围内:</span>
+          <span className="radius-label">Within:</span>
           {RADIUS_OPTIONS.map((r) => (
             <button
               key={r.meters}
