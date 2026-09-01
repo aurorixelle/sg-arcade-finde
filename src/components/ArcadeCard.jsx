@@ -1,9 +1,25 @@
-import { GAMES, CHAIN_COLORS } from "../constants.js";
+import { GAMES, CHAIN_COLORS, STATUS_BY_KEY, STATUS_GAMES } from "../constants.js";
+import { getGameEntry, summarizeGame } from "../utils/status.js";
 import { formatDistance } from "../utils/geo.js";
 
-export default function ArcadeCard({ arcade, distance, selected, onSelect, isFavorite, onToggleFavorite }) {
+const GAME_LABEL = Object.fromEntries(GAMES.map((g) => [g.key, g.label]));
+
+export default function ArcadeCard({ arcade, distance, selected, onSelect, isFavorite, onToggleFavorite, onOpenStatus }) {
   const chainColor = CHAIN_COLORS[arcade.chain] || "#64748b";
   const available = GAMES.filter((g) => arcade.games[g.key] > 0);
+
+  // Price lines from the structured prices map; the legacy higherPricing
+  // footnote only shows when no maimai price has been set.
+  const priceLines = GAMES
+    .filter((g) => arcade.prices?.[g.key])
+    .map((g) => `${g.label}: ${arcade.prices[g.key]}`);
+  if (!arcade.prices?.maimai && arcade.higherPricing) {
+    priceLines.push("maimai pricing here: 14 tokens / 4 medals");
+  }
+
+  const statusChips = STATUS_GAMES
+    .map((gk) => ({ gk, sum: summarizeGame(getGameEntry(arcade, gk)) }))
+    .filter((c) => c.sum);
 
   return (
     <article
@@ -79,14 +95,29 @@ export default function ArcadeCard({ arcade, distance, selected, onSelect, isFav
         ))}
       </div>
 
-      {(arcade.higherPricing || arcade.yenMedals) && (
+      {statusChips.length > 0 && (
+        <div className="status-summary">
+          {statusChips.map(({ gk, sum }) => (
+            <button
+              key={gk}
+              type="button"
+              className="status-chip"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenStatus?.();
+              }}
+              title="View machine status"
+            >
+              {GAME_LABEL[gk]} {STATUS_BY_KEY[sum.worst].emoji} {sum.ok}/{sum.total} OK
+            </button>
+          ))}
+        </div>
+      )}
+
+      {(priceLines.length > 0 || arcade.yenMedals) && (
         <div className="pricing-notes">
-          {arcade.higherPricing && (
-            <span>※ maimai pricing here: 14 tokens / 4 medals</span>
-          )}
-          {arcade.yenMedals && (
-            <span>¥ maimai cabinets accept 100 yen-medals</span>
-          )}
+          {priceLines.map((l) => <span key={l}>※ {l}</span>)}
+          {arcade.yenMedals && <span>¥ maimai cabinets accept 100 yen-medals</span>}
         </div>
       )}
     </article>

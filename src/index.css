@@ -333,6 +333,7 @@ body {
 /* ---------- header auth zone ---------- */
 .header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
 .header-title { min-width: 0; }
+.view-tabs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px; }
 .auth-zone { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px; }
 .login-btn {
   background: #1f2430;
@@ -539,3 +540,159 @@ body {
 }
 .admin-table .row-actions button:hover { border-color: var(--accent); color: var(--accent); }
 .admin-table .row-actions button.danger:hover { border-color: #dc2626; color: #dc2626; }
+
+/* ---------- status chips on arcade cards ---------- */
+.status-summary { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.status-chip {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.76rem;
+  cursor: pointer;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+.status-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- machine status view ---------- */
+.status-view {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 14px;
+}
+.status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+.status-legend .dim-note { flex-basis: 100%; }
+
+.status-chain { margin-bottom: 18px; }
+.status-chain h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-chain h3 i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+.status-arcade {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.status-arcade.focused { box-shadow: 0 0 0 2px var(--accent); }
+.status-arcade header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.status-arcade h4 { margin: 0; font-size: 0.98rem; flex: 1; min-width: 0; }
+.price-chip {
+  font-size: 0.76rem;
+  background: #fffbeb;
+  color: #92400e;
+  border-radius: 999px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+
+.game-status { margin-bottom: 12px; }
+.game-status:last-child { margin-bottom: 0; }
+.game-status-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.version-chip {
+  font-size: 0.74rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-weight: 600;
+}
+.game-status-sum { font-size: 0.8rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.as-of { font-size: 0.72rem; color: var(--text-dim); margin-left: auto; }
+.game-status-notes { margin: 0 0 8px; font-size: 0.82rem; color: var(--text-dim); white-space: pre-line; }
+
+.cab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+.cab-cell {
+  border: 1px solid var(--border);
+  border-left: 3px solid #9ca3af;
+  border-radius: 8px;
+  padding: 7px 9px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.cab-cell.s-ok { border-left-color: #16a34a; }
+.cab-cell.s-minor { border-left-color: #d97706; }
+.cab-cell.s-down { border-left-color: #dc2626; }
+.cab-cell.s-guest { border-left-color: #7c3aed; }
+.cab-cell.s-off { border-left-color: #6b7280; }
+.cab-cell.s-unknown { border-left-color: #9ca3af; }
+.cab-head { display: flex; align-items: center; gap: 6px; }
+.cab-head strong { font-size: 0.84rem; }
+.cab-side {
+  font-size: 0.68rem;
+  background: #eef1f5;
+  color: #374151;
+  border-radius: 4px;
+  padding: 0 5px;
+}
+.cab-status { margin-left: auto; }
+.cab-note { margin: 0; color: var(--text-dim); font-size: 0.76rem; white-space: pre-line; overflow-wrap: anywhere; }
+.cab-date { color: var(--text-dim); font-size: 0.7rem; margin-top: auto; }
+
+.sheet-link { margin: 16px 0 0; font-size: 0.82rem; color: var(--text-dim); }
+.sheet-link a { color: var(--accent); }
+
+/* ---------- machine status editor (admin) ---------- */
+.admin-prices { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.admin-prices label { align-items: center; }
+.admin-prices input { width: 100%; padding: 5px 8px; }
+
+.mse-game {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px 14px;
+  margin: 0 0 16px;
+}
+.mse-game legend { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); padding: 0 6px; }
+.mse-meta { display: grid; grid-template-columns: 200px 1fr; gap: 4px 14px; margin-bottom: 10px; }
+.mse-meta label { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--text-dim); }
+.mse-meta input, .mse-meta textarea {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.mse-meta textarea { resize: vertical; }
+.mse-table input, .mse-table select {
+  padding: 5px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-family: inherit;
+  width: 100%;
+  min-width: 80px;
+}
+.mse-table td:nth-child(4) input { min-width: 220px; }
+.mse-actions { margin-top: 8px; }
+
+@media (max-width: 700px) {
+  .mse-meta { grid-template-columns: 1fr; }
+}

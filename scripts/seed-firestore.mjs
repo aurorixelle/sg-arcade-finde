@@ -36,12 +36,15 @@ async function importArcades() {
   let count = 0;
   for (const arcade of data) {
     const id = slugify(arcade.name);
-    await db.collection("arcades").doc(id).set(arcade);
+    // merge: fields absent from the JSON (e.g. admin-edited machineStatus on a
+    // stale local file) are left alone; note this also means fields removed
+    // from the JSON linger until explicitly deleted.
+    await db.collection("arcades").doc(id).set(arcade, { merge: true });
     count++;
     process.stdout.write(`  ${id}\n`);
   }
   console.log(`Imported ${count} arcades.`);
-  console.log("NOTE: import overwrites any manual edits made in the admin panel for these docs.");
+  console.log("NOTE: import merges over the Firestore docs; sheet-sourced fields in the JSON replace live values.");
 }
 
 async function makeAdmin(email) {

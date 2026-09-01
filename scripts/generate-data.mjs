@@ -10,10 +10,14 @@
 //   (*) maimai pricing is higher (14 tokens / 4 medals instead of 10/3)
 //   (^)  maimai cabinets accept 100 yen-medals as currency (name footnote);
 //        in Operating Hours cells, (^) means may open later than stipulated
+//
+// Regeneration still resets sheet-sourced directory fields, but preserves
+// admin-curated machineStatus / prices from the previous output file.
 
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { parseCsv, slugify } from "./lib.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHEET_ID = "1yR7zAoR0DErE5iigS-VMBo4Cm5vlHP46gQsjW-t0MYc";
@@ -63,48 +67,6 @@ const AREA_MAP = {
   "689812": { region: "West", planningArea: "Choa Chu Kang" }, // Lot One
   "528833": { region: "East", planningArea: "Tampines" }, // Eastpoint Mall
 };
-
-// ---------------------------------------------------------------------------
-// CSV parsing (RFC-4180-ish: quoted fields may contain commas and newlines)
-// ---------------------------------------------------------------------------
-function parseCsv(text) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let inQuotes = false;
-  for (let i = 0; i < text.length; i++) {
-    const ch = text[i];
-    if (inQuotes) {
-      if (ch === '"') {
-        if (text[i + 1] === '"') {
-          field += '"';
-          i++;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        field += ch;
-      }
-    } else if (ch === '"') {
-      inQuotes = true;
-    } else if (ch === ",") {
-      row.push(field);
-      field = "";
-    } else if (ch === "\n") {
-      row.push(field.replace(/\r$/, ""));
-      rows.push(row);
-      row = [];
-      field = "";
-    } else {
-      field += ch;
-    }
-  }
-  if (field.length > 0 || row.length > 0) {
-    row.push(field.replace(/\r$/, ""));
-    rows.push(row);
-  }
-  return rows;
-}
 
 // ---------------------------------------------------------------------------
 // Field normalization
@@ -321,6 +283,26 @@ async function main() {
     }
   }
   if (missingArea) console.warn(`${missingArea} arcades missing region/planningArea`);
+
+  // Carry admin-curated fields forward from the previous output so this
+  // regeneration cannot wipe imported/edited machine status and prices.
+  let prev = [];
+  try {
+    prev = JSON.parse(await readFile(OUT_PATH, "utf8"));
+  } catch {
+    // no previous output — nothing to preserve
+  }
+  const prevById = new Map(prev.map((a) => [slugify(a.name), a]));
+  let preserved = 0;
+  for (const a of arcades) {
+    const old = prevById.get(slugify(a.name));
+    if (old?.machineStatus) {
+      a.machineStatus = old.machineStatus;
+      preserved++;
+    }
+    if (old?.prices) a.prices = old.prices;
+  }
+  if (preserved) console.log(`Preserved machineStatus for ${preserved} arcades from previous output`);
 
   await mkdir(OUT_DIR, { recursive: true });
   await writeFile(OUT_PATH, JSON.stringify(arcades, null, 2) + "\n");

@@ -13,6 +13,8 @@ export const GAMES = [
   { key: "piu", label: "Pump It Up" },
 ];
 
+export const CHAINS = ["Virtualand", "Paco FunWorld", "Timezone", "Cow Play Cow Moo", "Zone X"];
+
 export const CHAIN_COLORS = {
   Virtualand: "#e05353",
   "Paco FunWorld": "#e58f2a",
@@ -22,6 +24,20 @@ export const CHAIN_COLORS = {
 };
 
 export const REGIONS = ["Central", "East", "North", "North-East", "West"];
+
+// Games that carry per-cab machine status (the community sheet only tracks these two)
+export const STATUS_GAMES = ["maimai", "chunithm"];
+
+// Cab status values, mirroring the sheet's legend. Keys are the stored values.
+export const STATUS = [
+  { key: "ok", emoji: "✅", short: "OK", label: "No known or reported problems" },
+  { key: "minor", emoji: "⚠️", short: "Minor issues", label: "Playable with minor issues" },
+  { key: "down", emoji: "❌", short: "Down", label: "Unplayable in normal circumstances, major issues" },
+  { key: "guest", emoji: "⬇️", short: "Guest only", label: "Only guest play available" },
+  { key: "off", emoji: "⚫", short: "Powered off", label: "Powered off" },
+  { key: "unknown", emoji: "❓", short: "Needs more info", label: "Needs more info" },
+];
+export const STATUS_BY_KEY = Object.fromEntries(STATUS.map((s) => [s.key, s]));
 
 export const RADIUS_OPTIONS = [
   { label: "1 km", meters: 1000 },

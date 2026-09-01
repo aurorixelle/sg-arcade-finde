@@ -15,6 +15,12 @@ planning area.
 - **Nearest arcade**: use your browser location to find the closest arcade
 - **Radius search**: show arcades within 1 / 2 / 5 km of you (map circle + sorted list)
 - **Map** (Leaflet + OpenStreetMap) with per-chain colored markers, linked to the list
+- **Machine status**: per-cab condition for maimai / CHUNITHM (mirrors the sheet's
+  status tabs — each cab and side has a status, note and last-reported date),
+  shown as chips on the arcade cards and in a dedicated **Machine status** view.
+  Admins edit it from the admin panel's **Status** action.
+- **Prices**: free-text price per arcade × per game (e.g. "14 tokens / 4 medals"),
+  editable by admins in the arcade form, shown on cards and in the status view.
 
 ## Development
 
@@ -88,7 +94,8 @@ node scripts/generate-data.mjs
 
 The script re-downloads the CSV, re-parses, and reuses cached OneMap geocodes
 (`scripts/.geocache.json`). New locations need a manual entry in `AREA_MAP`
-inside the script to set their region / planning area.
+inside the script to set their region / planning area. Regeneration preserves
+admin-curated `machineStatus` / `prices` fields from the previous file.
 
 To push a regenerated snapshot into Firestore:
 
@@ -96,13 +103,34 @@ To push a regenerated snapshot into Firestore:
 node scripts/seed-firestore.mjs --import
 ```
 
-⚠️ `--import` overwrites any manual edits made through the admin panel for the
-imported documents.
+⚠️ `--import` merges over the Firestore docs — sheet-sourced fields in the JSON
+replace live values, but fields absent from the JSON (e.g. statuses edited in
+the admin panel on a stale local file) are left alone.
+
+## Machine status import (one-time baseline)
+
+`scripts/import-status.mjs` imported the sheet's maimai / CHUNITHM status tabs
+(per-cab status, notes, report dates) into the arcade docs' `machineStatus`
+field, plus seeded `prices.maimai` from the sheet's `(*)` footnote
+(10 tokens / 3 medals, or 14 / 4 where pricing is higher). It can be re-run if
+needed — always a merge, never touches other fields:
+
+```bash
+npm run status:import            # dry run: parse + report only
+npm run status:import -- --write # also merge into Firestore + arcades.json
+```
+
+Sheet locations are matched to arcade docs by chain + branch; the mapping
+exceptions live in `LOCATION_OVERRIDES` inside the script. Unmatched locations
+are skipped with a warning (e.g. Timezone Plaza Singapura — closed Aug 2026).
+After this baseline, statuses are maintained through the admin panel.
 
 ## Notes
 
 - Geolocation requires HTTPS or `localhost`.
 - `*` on the sheet means higher maimai pricing (14 tokens / 4 medals); `^` means the
-  cabinets accept 100 yen-medals — both are surfaced on the arcade cards.
+  cabinets accept 100 yen-medals. Pricing now lives in the editable `prices`
+  field per arcade; the `higherPricing` footnote only shows as a fallback when
+  no maimai price is set.
 - The Firebase web `apiKey` in `src/firebase-config.js` is a public identifier,
   not a secret — access is controlled by Auth + Firestore rules.

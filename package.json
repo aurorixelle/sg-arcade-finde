@@ -12,6 +12,7 @@
     "admin:grant": "node scripts/seed-firestore.mjs --make-admin",
     "admin:revoke": "node scripts/seed-firestore.mjs --remove-admin",
     "data:import": "node scripts/seed-firestore.mjs --import",
+    "status:import": "node scripts/import-status.mjs",
     "rules:publish": "node scripts/seed-firestore.mjs --publish-rules"
   },
   "dependencies": {

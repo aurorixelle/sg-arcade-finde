@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { doc, setDoc, deleteDoc } from "firebase/firestore";
 import { db, slugify } from "../firebase.js";
-import { GAMES, CHAIN_COLORS, REGIONS } from "../constants.js";
+import { GAMES, CHAIN_COLORS, REGIONS, STATUS_BY_KEY } from "../constants.js";
+import { getGameEntry, summarizeGame } from "../utils/status.js";
+import MachineStatusEditor from "./MachineStatusEditor.jsx";
 
 function emptyArcade() {
   return {
@@ -35,6 +37,7 @@ function ArcadeForm({ initial, onDone, onCancel }) {
       hours: base.hours.join("\n"),
       extraGames: (base.extraGames ?? []).join(", "),
       shelteredNote: base.shelteredNote ?? "",
+      prices: base.prices ?? {},
     };
   });
   const isNew = !initial;
@@ -70,6 +73,9 @@ function ArcadeForm({ initial, onDone, onCancel }) {
         yenMedals: !!form.yenMedals,
         games: Object.fromEntries(GAMES.map((g) => [g.key, Math.max(0, parseInt(form.games[g.key] || 0, 10) || 0)])),
         extraGames: form.extraGames.split(/,\s*/).map((s) => s.trim()).filter(Boolean),
+        prices: Object.fromEntries(
+          GAMES.map((g) => [g.key, (form.prices?.[g.key] ?? "").trim()]).filter(([, v]) => v !== "")
+        ),
       };
       if (!record.name || !record.postal || !record.planningArea) {
         throw new Error("Name, postal, and planning area are required");
@@ -78,7 +84,8 @@ function ArcadeForm({ initial, onDone, onCancel }) {
         throw new Error("Invalid latitude/longitude");
       }
       const id = initial?.id ?? slugify(record.name);
-      await setDoc(doc(db, "arcades", id), record);
+      // merge: fields this form does not manage (machineStatus, …) survive the save
+      await setDoc(doc(db, "arcades", id), record, { merge: true });
       onDone();
     } catch (err) {
       setError(err.message?.replace("Firebase: ", "") || String(err));
@@ -128,7 +135,7 @@ function ArcadeForm({ initial, onDone, onCancel }) {
       <div className="admin-checks">
         <label><input type="checkbox" checked={form.sheltered} onChange={set("sheltered")} /> Sheltered walkway</label>
         <label><input type="checkbox" checked={form.mayOpenLate} onChange={set("mayOpenLate")} /> May open late</label>
-        <label><input type="checkbox" checked={form.higherPricing} onChange={set("higherPricing")} /> Higher maimai pricing</label>
+        <label><input type="checkbox" checked={form.higherPricing} onChange={set("higherPricing")} /> Higher maimai pricing (legacy footnote)</label>
         <label><input type="checkbox" checked={form.yenMedals} onChange={set("yenMedals")} /> Accepts yen medals</label>
       </div>
 
@@ -140,6 +147,20 @@ function ArcadeForm({ initial, onDone, onCancel }) {
             <input
               type="number" min={0} value={form.games[g.key]}
               onChange={(e) => setForm((f) => ({ ...f, games: { ...f.games, [g.key]: e.target.value } }))}
+            />
+          </label>
+        ))}
+      </fieldset>
+
+      <fieldset className="admin-games admin-prices">
+        <legend>Prices (free text per game)</legend>
+        {GAMES.map((g) => (
+          <label key={g.key}>
+            <span>{g.label}</span>
+            <input
+              value={form.prices[g.key] ?? ""}
+              onChange={(e) => setForm((f) => ({ ...f, prices: { ...f.prices, [g.key]: e.target.value } }))}
+              placeholder="e.g. 14 tokens / 4 medals"
             />
           </label>
         ))}
@@ -157,8 +178,15 @@ function ArcadeForm({ initial, onDone, onCancel }) {
   );
 }
 
+// Worst-status emoji for the table's count cells, or "" when no status data.
+function worstEmoji(a, gameKey) {
+  const s = summarizeGame(getGameEntry(a, gameKey));
+  return s ? ` ${STATUS_BY_KEY[s.worst].emoji}` : "";
+}
+
 export default function AdminPanel({ arcades, onExit }) {
   const [editing, setEditing] = useState(null); // null = list, "new" or arcade object
+  const [statusEditing, setStatusEditing] = useState(null); // null or arcade object
   const [error, setError] = useState(null);
 
   async function handleDelete(a) {
@@ -168,6 +196,19 @@ export default function AdminPanel({ arcades, onExit }) {
     } catch (err) {
       setError(err.message);
     }
+  }
+
+  if (statusEditing !== null) {
+    return (
+      <section className="admin-panel">
+        <MachineStatusEditor
+          key={statusEditing.id}
+          arcade={statusEditing}
+          onDone={() => setStatusEditing(null)}
+          onCancel={() => setStatusEditing(null)}
+        />
+      </section>
+    );
   }
 
   if (editing !== null) {
@@ -204,13 +245,14 @@ export default function AdminPanel({ arcades, onExit }) {
                 <td>{a.branch}</td>
                 <td><span className="chain-badge" style={{ background: CHAIN_COLORS[a.chain] || "#64748b" }}>{a.chain}</span></td>
                 <td>{a.planningArea}</td>
-                <td className="num">{a.games.maimai}</td>
-                <td className="num">{a.games.chunithm}</td>
+                <td className="num">{a.games.maimai}{worstEmoji(a, "maimai")}</td>
+                <td className="num">{a.games.chunithm}{worstEmoji(a, "chunithm")}</td>
                 <td className="dim">
                   {GAMES.slice(2).filter((g) => a.games[g.key] > 0).map((g) => g.label).join(", ") || "—"}
                 </td>
                 <td className="row-actions">
                   <button type="button" onClick={() => setEditing(a)}>Edit</button>
+                  <button type="button" onClick={() => setStatusEditing(a)}>Status</button>
                   <button type="button" className="danger" onClick={() => handleDelete(a)}>Delete</button>
                 </td>
               </tr>

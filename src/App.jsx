@@ -8,10 +8,9 @@ import ArcadeCard from "./components/ArcadeCard.jsx";
 import MapView from "./components/MapView.jsx";
 import NearMePanel from "./components/NearMePanel.jsx";
 import AdminPanel from "./components/AdminPanel.jsx";
+import StatusView from "./components/StatusView.jsx";
 import { distanceM } from "./utils/geo.js";
-import { CHAIN_COLORS } from "./constants.js";
-
-const CHAINS = ["Virtualand", "Paco FunWorld", "Timezone", "Cow Play Cow Moo", "Zone X"];
+import { CHAIN_COLORS, CHAINS } from "./constants.js";
 
 export default function App() {
   return (
@@ -25,7 +24,8 @@ function Layout() {
   const { user, isAdmin, verified, favorites, firebaseReady, signOut, toggleFavorite } = useAuth();
   const { arcades, source } = useArcades();
 
-  const [view, setView] = useState("browse"); // browse | admin
+  const [view, setView] = useState("browse"); // browse | status | admin
+  const [statusFocus, setStatusFocus] = useState(null); // arcade id to scroll to in the status view
   const [showAuth, setShowAuth] = useState(false);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
 
@@ -153,6 +153,35 @@ function Layout() {
             </p>
           </div>
 
+          <div className="view-tabs">
+            <button
+              type="button"
+              className={`view-tab-btn ${view === "browse" ? "active" : ""}`}
+              onClick={() => setView("browse")}
+            >
+              Browse
+            </button>
+            <button
+              type="button"
+              className={`view-tab-btn ${view === "status" ? "active" : ""}`}
+              onClick={() => {
+                setView("status");
+                setStatusFocus(null);
+              }}
+            >
+              Machine status
+            </button>
+            {isAdmin && (
+              <button
+                type="button"
+                className={`view-tab-btn ${view === "admin" ? "active" : ""}`}
+                onClick={() => setView(view === "admin" ? "browse" : "admin")}
+              >
+                Admin
+              </button>
+            )}
+          </div>
+
           <div className="auth-zone">
             {!firebaseReady ? (
               <span className="dim-note">Accounts not configured (snapshot mode)</span>
@@ -166,15 +195,6 @@ function Layout() {
                   {user.email}
                   {!verified && <em>(unverified)</em>}
                 </span>
-                {isAdmin && (
-                  <button
-                    type="button"
-                    className={`view-tab-btn ${view === "admin" ? "active" : ""}`}
-                    onClick={() => setView(view === "admin" ? "browse" : "admin")}
-                  >
-                    Admin
-                  </button>
-                )}
                 {verified && (
                   <button
                     type="button"
@@ -199,6 +219,8 @@ function Layout() {
 
       {view === "admin" && isAdmin ? (
         <AdminPanel arcades={arcades} onExit={() => setView("browse")} />
+      ) : view === "status" ? (
+        <StatusView arcades={arcades} focus={statusFocus} onExit={() => setView("browse")} />
       ) : (
         <>
           <FilterBar
@@ -252,6 +274,10 @@ function Layout() {
                   onSelect={() => setSelected(arcade.name)}
                   isFavorite={favorites.includes(arcade.id)}
                   onToggleFavorite={verified ? () => toggleFavorite(arcade.id) : null}
+                  onOpenStatus={() => {
+                    setStatusFocus(arcade.id);
+                    setView("status");
+                  }}
                 />
               ))}
             </section>

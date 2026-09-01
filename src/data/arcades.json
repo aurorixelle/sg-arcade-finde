@@ -32,6 +32,137 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Any button issues for the cabs here usually gets fixed very fast. Otherwise, please inform the spreadsheet maintainer if these button issues aren't fixed after a few days.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "A317",
+            "side": "1P",
+            "status": "down",
+            "note": "1P headphone jack is jammed & cannot insert; sensor problems\nBoth sides have flickering issue",
+            "reportedAt": "2026-05-24"
+          },
+          {
+            "id": "A317",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-05-24"
+          },
+          {
+            "id": "A318",
+            "side": "1P",
+            "status": "down",
+            "note": "20fps lag in menu, input lags; P1 button 6 drops inputs",
+            "reportedAt": "2026-08-14"
+          },
+          {
+            "id": "A318",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-14"
+          },
+          {
+            "id": "A319",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A319",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A320",
+            "side": "1P",
+            "status": "down",
+            "note": "P1 button 5 sticky & P2 button 5 stuck. On both sides, there's an audio pause/desync for certain songs (Roki / RPG)",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "A320",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "A341",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A341",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A342",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A342",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "A331",
+            "side": null,
+            "status": "ok",
+            "note": "Adjust headphone jack to get both channels",
+            "reportedAt": null
+          },
+          {
+            "id": "A332",
+            "side": null,
+            "status": "ok",
+            "note": "Adjust headphone jack to get both channels",
+            "reportedAt": null
+          },
+          {
+            "id": "A339",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A340",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -66,6 +197,221 @@
       "popn": 1,
       "drs": 1,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "For this location, note that lifts and escalators are undergoing modernisation works resulting in inconvenience to those playing at this arcade.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "A309",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A309",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A310",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A310",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A311",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A311",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A312",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A312",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A313",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A313",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A314",
+            "side": "1P",
+            "status": "down",
+            "note": "P1 button 4 stuck.",
+            "reportedAt": "2026-08-16"
+          },
+          {
+            "id": "A314",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-16"
+          },
+          {
+            "id": "A315",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A315",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A316",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A316",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A321",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A321",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A322",
+            "side": "1P",
+            "status": "minor",
+            "note": "P1 headphone jack is broken, button 6 frame broken and may jam.",
+            "reportedAt": "2026-08-13"
+          },
+          {
+            "id": "A322",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-13"
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "For this location, note that lifts and escalators are undergoing modernisation works resulting in inconvenience to those playing at this arcade.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "A323",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A324",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A325",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A326",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A327",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A328",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A333",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A334",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -102,6 +448,95 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "All buttons re-padded for this outlet.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "A307",
+            "side": "1P",
+            "status": "ok",
+            "note": "2P easy white screen",
+            "reportedAt": null
+          },
+          {
+            "id": "A307",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A308",
+            "side": "1P",
+            "status": "minor",
+            "note": "1P button 1 input lag, 2P sensor issue / buttons 5 & 6 drop inputs",
+            "reportedAt": "2026-08-04"
+          },
+          {
+            "id": "A308",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-04"
+          },
+          {
+            "id": "A343",
+            "side": "1P",
+            "status": "minor",
+            "note": "1P buttons 1 & 2 drop inputs, 2P smooth screen, dropped inputs on bottom right sensors",
+            "reportedAt": "2026-07-25"
+          },
+          {
+            "id": "A343",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-07-25"
+          },
+          {
+            "id": "A344",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A344",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "A329",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "A330",
+            "side": null,
+            "status": "ok",
+            "note": "Adjust headphone jack to get both channels",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -136,6 +571,137 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "❌ Cabs are generally known to be in poor condition! ❌\n\nFans are installed above cabs; There is some cables on the floor exposed between cabs C1 and C2, PLEASE DO NOT STEP ON THEM OR TAMPER WITH THE POWER OUTLETS.\n\nFrom left to right: B2, B1, A2, A1, C2, C1.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "A1",
+            "side": "1P",
+            "status": "down",
+            "note": "P1 buttons 1 and 6 drops inputs, P2 jammed button 5.",
+            "reportedAt": "2026-07-09"
+          },
+          {
+            "id": "A1",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-07-09"
+          },
+          {
+            "id": "A2",
+            "side": "1P",
+            "status": "down",
+            "note": "P1 button 5 is stuck. P2 button 4 is hard & dead headphone audio. Speakers volume adjusted.",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "A2",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "B1",
+            "side": "1P",
+            "status": "minor",
+            "note": "P1 headphone jack no right audio & P2 headphone jack no left audio, button 6 hard.",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "B1",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-07-02"
+          },
+          {
+            "id": "B2",
+            "side": "1P",
+            "status": "down",
+            "note": "1P screen misaligned & button 2 stuck\nNo continue screen",
+            "reportedAt": "2026-09-01"
+          },
+          {
+            "id": "B2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-09-01"
+          },
+          {
+            "id": "C1",
+            "side": "1P",
+            "status": "down",
+            "note": "1P button 3 has a hole, be careful when you tap + button 8 dead\nBacklight is off",
+            "reportedAt": "2026-07-31"
+          },
+          {
+            "id": "C1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-07-31"
+          },
+          {
+            "id": "C2",
+            "side": "1P",
+            "status": "minor",
+            "note": "P1 button 8 inconsistent (misfiring), P2 button 2 almost unplayable",
+            "reportedAt": "2026-07-18"
+          },
+          {
+            "id": "C2",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-07-18"
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "Fans are installed above cabs. Cabs are ordered from right-to-left for this outlet due to new layout. Chunithm cabs now face towards the maimai cabs.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "down",
+            "note": "Green screen + Input Drops on Air Sensor and Ground Slider",
+            "reportedAt": "2026-07-29"
+          },
+          {
+            "id": "2",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "3",
+            "side": null,
+            "status": "minor",
+            "note": "Ground slider unusable (gloveless), headphone jack cannot insert.",
+            "reportedAt": "2026-07-09"
+          },
+          {
+            "id": "4",
+            "side": null,
+            "status": "minor",
+            "note": "Ground inputs misfire (miss or delayed)",
+            "reportedAt": "2026-07-09"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -169,6 +735,95 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Fans are installed above the cabs.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "L1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "L1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "L2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "L2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "R1",
+            "side": "1P",
+            "status": "ok",
+            "note": "No continue screen",
+            "reportedAt": null
+          },
+          {
+            "id": "R1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "R2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "R2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": null,
+            "status": "ok",
+            "note": "Purple screen",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -202,6 +857,60 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Fans are installed at the maimai area and you can adjust the speed.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "No continue screen",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "Fans are installed and you can adjust the fan speed.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "minor",
+            "note": "Headphone left audio is dead",
+            "reportedAt": "2026-05-07"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -235,6 +944,60 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Fans are installed on both cabs.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -271,6 +1034,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "down",
+            "note": "1P sensors issue & spoilt button 4, 2P headphone bugged & sensor issue\nNo continue screen",
+            "reportedAt": "2026-07-20"
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-07-20"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -307,6 +1096,88 @@
       "popn": 1,
       "drs": 0,
       "piu": 2
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "24 Aug 2026: ALL.Net authentication stuck at checking, waiting for technician.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "2P easy white screen",
+            "reportedAt": "2026-08-24"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-24"
+          },
+          {
+            "id": "3",
+            "side": "1P",
+            "status": "ok",
+            "note": "P2 button 2 has a hole, headphone jack is jammed, cannot insert.",
+            "reportedAt": "2026-08-30"
+          },
+          {
+            "id": "3",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-08-30"
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "3",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -343,6 +1214,60 @@
       "popn": 1,
       "drs": 0,
       "piu": 1
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "A note that the remarks placed next to the cab number in this spreadsheet for this outlet indicates where the cabs were transferred from. Additionally, Cab 3 (the Vivo cab) is closest to the entrance and faces DDR, while Cabs 1 and 2 face each other.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1 (Parkway)",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1 (Parkway)",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2 (Bedok)",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2 (Bedok)",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "3 (Vivo)",
+            "side": "1P",
+            "status": "ok",
+            "note": "1P easy to white screen & misaligned, 2P bright / saturated & button 5 stuck",
+            "reportedAt": "2026-08-24"
+          },
+          {
+            "id": "3 (Vivo)",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-24"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -379,6 +1304,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 1
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -415,6 +1366,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Cab is behind a pillar.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -451,6 +1428,22 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "chunithm": {
+        "version": "1.55",
+        "notes": "Newly transferred from Orchard Xchange, needs more info.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
     }
   },
   {
@@ -485,6 +1478,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -519,6 +1538,60 @@
       "popn": 0,
       "drs": 0,
       "piu": 2
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "Cab is wobbly",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "3",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "3",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -553,6 +1626,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -587,6 +1686,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Cab 1 faces the glass and cab 2 faces the wall.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "No continue screen",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "1P button 5 has a different feeling. No continue screen",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -624,7 +1763,68 @@
     },
     "extraGames": [
       "Nostalgia"
-    ]
+    ],
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "down",
+            "note": "Sensor issues on both player sides, playing normally may miss touches & slides.",
+            "reportedAt": "2026-08-15"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-15"
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "Member card only.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
+    }
   },
   {
     "name": "Cow Play Cow Moo – Downtown East",
@@ -664,7 +1864,47 @@
     "extraGames": [
       "Reflec Beat",
       "Nostalgia"
-    ]
+    ],
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Accepts 100Y medals and member card; rates is 2 100Y-medals or 10 member card tokens.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
+    }
   },
   {
     "name": "Cow Play Cow Moo – Hillion Mall",
@@ -697,6 +1937,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Fans are installed near the ceiling. Cab 1 is behind a pillar. Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1 (NEW)",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1 (NEW)",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2 (OLD)",
+            "side": "1P",
+            "status": "down",
+            "note": "Easy white screen; overheating issues",
+            "reportedAt": "2026-08-27"
+          },
+          {
+            "id": "2 (OLD)",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-27"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -731,6 +2011,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Accepts 100Y medals and member card. Higher rates per game at 3 100Y-medals or 14 member card tokens.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "down",
+            "note": "1P half broken headphone jack + unplayable, 2P sharp plastic near B6, top left sensors input drop",
+            "reportedAt": "2026-08-12"
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-08-12"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "14 tokens / 4 medals"
     }
   },
   {
@@ -765,6 +2071,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only. Higher rates per game at 14 member card tokens.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "1P broken headphone jack, 2P broken speaker.",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "14 tokens / 4 medals"
     }
   },
   {
@@ -799,6 +2131,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Accepts medals and member card. Higher rates per game at 3 100Y-medals or 14 member card tokens.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "14 tokens / 4 medals"
     }
   },
   {
@@ -833,6 +2191,60 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1 (inner)",
+            "side": "1P",
+            "status": "down",
+            "note": "Sensor issues on both player sides",
+            "reportedAt": "2026-06-06"
+          },
+          {
+            "id": "1 (inner)",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-06-06"
+          },
+          {
+            "id": "2 (window)",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2 (window)",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      },
+      "chunithm": {
+        "version": "1.55",
+        "notes": "Member card only.",
+        "asOf": "2026-08-26",
+        "cabs": [
+          {
+            "id": "1",
+            "side": null,
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -867,6 +2279,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "down",
+            "note": "1P button 4 cannot press at all",
+            "reportedAt": "2026-08-26"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-26"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -901,6 +2353,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Accepts medals and member card; still dispenses old medals. Rates at 3 old medals or 10 member card tokens.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -935,6 +2427,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "P2 button 2 and 4 may drop some inputs. Broken audiojacks.",
+            "reportedAt": "2026-08-26"
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-08-26"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -969,6 +2487,32 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "minor",
+            "note": "P1 button 5 dropping inputs",
+            "reportedAt": "2026-08-16"
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-16"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -1003,6 +2547,60 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Member card only.",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "2P button 5 has a different feel (stiff but can still sense)",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "minor",
+            "note": "Dim screen, 1P outer sensors may drop inputs, 2P rim rusted",
+            "reportedAt": "2026-07-18"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-07-18"
+          },
+          {
+            "id": "3",
+            "side": "1P",
+            "status": "ok",
+            "note": "2P upper monitor a bit crooked, button 4 may get stuck. Slight offset issue but playable.",
+            "reportedAt": "2026-08-29"
+          },
+          {
+            "id": "3",
+            "side": "2P",
+            "status": "minor",
+            "note": "",
+            "reportedAt": "2026-08-29"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -1037,6 +2635,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "1P has slight orange screen on the right side\nNo continue screen",
+            "reportedAt": null
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": null
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "down",
+            "note": "1P yellow tint screen, saturated and middle touch sensor still spoilt.\nNo continue screen",
+            "reportedAt": "2026-08-21"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "ok",
+            "note": "",
+            "reportedAt": "2026-08-21"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   },
   {
@@ -1071,6 +2709,46 @@
       "popn": 0,
       "drs": 0,
       "piu": 0
+    },
+    "machineStatus": {
+      "maimai": {
+        "version": "1.65-A",
+        "notes": "Fans are installed above both machines, both sides",
+        "asOf": "2026-08-30",
+        "cabs": [
+          {
+            "id": "1",
+            "side": "1P",
+            "status": "ok",
+            "note": "P1 button 5 can get stuck, P2 sensor B8 doesn't sense and drops on touch notes.",
+            "reportedAt": "2026-08-31"
+          },
+          {
+            "id": "1",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-31"
+          },
+          {
+            "id": "2",
+            "side": "1P",
+            "status": "ok",
+            "note": "P2 button 1 came loose and may drop inputs.",
+            "reportedAt": "2026-08-31"
+          },
+          {
+            "id": "2",
+            "side": "2P",
+            "status": "down",
+            "note": "",
+            "reportedAt": "2026-08-31"
+          }
+        ]
+      }
+    },
+    "prices": {
+      "maimai": "10 tokens / 3 medals"
     }
   }
 ]
