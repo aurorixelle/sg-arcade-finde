@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f6f8" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1218" />
     <title>SG Arcade Finder</title>
     <meta name="description" content="Find rhythm game arcades (maimai, CHUNITHM, Taiko, IIDX and more) in Singapore by region, chain, or games — plus nearest arcade search." />
+    <script>
+      // Apply the saved/system theme before first paint to avoid a light flash.
+      (function () {
+        try {
+          var pref = localStorage.getItem("sgarcade.theme");
+          var dark = pref ? pref === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.dataset.theme = "dark";
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

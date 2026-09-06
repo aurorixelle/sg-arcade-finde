@@ -1,12 +1,59 @@
 :root {
+  color-scheme: light;
   --bg: #f5f6f8;
   --card-bg: #fff;
+  --surface: #fff;
   --text: #1f2430;
   --text-dim: #6b7280;
   --border: #e5e7eb;
   --accent: #2563eb;
   --accent-soft: rgba(37, 99, 235, 0.08);
+  --inverse-bg: #1f2430;
+  --inverse-text: #fff;
+  --chip-bg: #eef1f5;
+  --chip-text: #374151;
+  --badge-maimai-bg: #fde8e8;
+  --badge-maimai-text: #b91c1c;
+  --badge-chunithm-bg: #e5f0ff;
+  --badge-chunithm-text: #1d4ed8;
+  --badge-extra-bg: #f3efe7;
+  --badge-extra-text: #8a6d3b;
+  --warn-bg: #fffbeb;
+  --warn-text: #92400e;
+  --warn-border: #fcd34d;
+  --danger: #b91c1c;
+  --success: #16a34a;
   --radius: 10px;
+}
+
+/* Dark palette — applied via <html data-theme="dark"> (see useTheme.js and the
+   pre-paint script in index.html). Map tiles stay light by design; only the
+   page chrome and Leaflet popups flip. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1218;
+  --card-bg: #171b23;
+  --surface: #1e232d;
+  --text: #e6e9ef;
+  --text-dim: #9aa3b2;
+  --border: #2a303c;
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.14);
+  --inverse-bg: #e6e9ef;
+  --inverse-text: #171b23;
+  --chip-bg: #262c38;
+  --chip-text: #c3cad6;
+  --badge-maimai-bg: #3a2026;
+  --badge-maimai-text: #f08c8c;
+  --badge-chunithm-bg: #1d2b45;
+  --badge-chunithm-text: #8ab4ff;
+  --badge-extra-bg: #2e2a1e;
+  --badge-extra-text: #c8ab6e;
+  --warn-bg: #2c2416;
+  --warn-text: #f0c07a;
+  --warn-border: #5a4a22;
+  --danger: #f08c8c;
+  --success: #4ade80;
 }
 
 * { box-sizing: border-box; }
@@ -53,7 +100,8 @@ body {
   padding: 7px 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   font-size: 0.9rem;
   min-width: 170px;
   cursor: pointer;
@@ -63,7 +111,8 @@ body {
 .game-chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
 .game-chip {
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   border-radius: 999px;
   padding: 5px 11px;
   font-size: 0.83rem;
@@ -136,7 +185,7 @@ body {
   color: var(--text-dim);
 }
 .clear-btn:hover { color: var(--text); border-color: var(--text-dim); }
-.geo-error { margin: 0; color: #b91c1c; font-size: 0.88rem; }
+.geo-error { margin: 0; color: var(--danger); font-size: 0.88rem; }
 
 .nearest-result {
   display: flex;
@@ -162,7 +211,8 @@ body {
 .radius-label { font-size: 0.88rem; color: var(--text-dim); }
 .radius-btn {
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 0.88rem;
@@ -185,7 +235,9 @@ body {
 }
 @media (max-width: 900px) {
   .app-main { grid-template-columns: 1fr; }
-  .map-pane { height: 420px; }
+  /* Single column: the page scrolls naturally — no nested list scroll */
+  .arcade-list { max-height: none; overflow: visible; }
+  .map-pane { height: 45vh; min-height: 320px; }
 }
 
 /* ---------- list ---------- */
@@ -266,16 +318,16 @@ body {
   font-size: 0.76rem;
   border-radius: 6px;
   padding: 2px 8px;
-  background: #eef1f5;
-  color: #374151;
+  background: var(--chip-bg);
+  color: var(--chip-text);
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 .game-badge strong { font-size: 0.72rem; color: var(--text-dim); }
-.game-badge.extra { background: #f3efe7; color: #8a6d3b; font-style: italic; }
-.game-badge.g-maimai { background: #fde8e8; color: #b91c1c; }
-.game-badge.g-chunithm { background: #e5f0ff; color: #1d4ed8; }
+.game-badge.extra { background: var(--badge-extra-bg); color: var(--badge-extra-text); font-style: italic; }
+.game-badge.g-maimai { background: var(--badge-maimai-bg); color: var(--badge-maimai-text); }
+.game-badge.g-chunithm { background: var(--badge-chunithm-bg); color: var(--badge-chunithm-text); }
 
 .pricing-notes {
   margin-top: 8px;
@@ -283,8 +335,8 @@ body {
   flex-direction: column;
   gap: 2px;
   font-size: 0.78rem;
-  color: #92400e;
-  background: #fffbeb;
+  color: var(--warn-text);
+  background: var(--warn-bg);
   border-radius: 6px;
   padding: 6px 9px;
 }
@@ -313,12 +365,22 @@ body {
 .map-popup { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
 .map-popup span { color: var(--text-dim); }
 
+/* Leaflet chrome follows the page theme; the map tiles themselves stay light
+   in dark mode (deliberate), so the attribution/legend keep fixed light-tile
+   styling. */
+.leaflet-container { background: var(--card-bg); }
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip { background: var(--surface); color: var(--text); }
+.leaflet-popup-content-wrapper a, .leaflet-popup-content a { color: var(--accent); }
+.leaflet-popup-close-button { color: var(--text-dim) !important; }
+
 .map-legend {
   position: absolute;
   bottom: 12px;
   left: 12px;
   z-index: 500;
   background: rgba(255, 255, 255, 0.92);
+  color: #1f2430; /* fixed: sits on the always-light map tiles */
   border-radius: 8px;
   padding: 8px 12px;
   display: flex;
@@ -336,8 +398,8 @@ body {
 .view-tabs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px; }
 .auth-zone { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px; }
 .login-btn {
-  background: #1f2430;
-  color: #fff;
+  background: var(--inverse-bg);
+  color: var(--inverse-text);
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -351,22 +413,23 @@ body {
 .dim-note { font-size: 0.78rem; color: var(--text-dim); }
 .view-tab-btn, .fav-toggle {
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   border-radius: 8px;
   padding: 6px 12px;
   font-size: 0.84rem;
   cursor: pointer;
 }
 .view-tab-btn:hover, .fav-toggle:hover { border-color: var(--accent); }
-.view-tab-btn.active { background: #1f2430; border-color: #1f2430; color: #fff; }
+.view-tab-btn.active { background: var(--inverse-bg); border-color: var(--inverse-bg); color: var(--inverse-text); }
 .fav-toggle.active { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
-.live-dot { color: #16a34a; font-size: 0.75rem; margin-left: 8px; }
+.live-dot { color: var(--success); font-size: 0.75rem; margin-left: 8px; }
 
 /* ---------- verify banner ---------- */
 .verify-banner {
   margin-top: 10px;
-  background: #fffbeb;
-  border: 1px solid #fcd34d;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 0.86rem;
@@ -379,14 +442,14 @@ body {
 .verify-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .verify-actions button {
   border: 1px solid #f59e0b;
-  background: #fff;
-  color: #92400e;
+  background: var(--surface);
+  color: var(--warn-text);
   border-radius: 6px;
   padding: 4px 10px;
   font-size: 0.8rem;
   cursor: pointer;
 }
-.verify-actions em { font-style: normal; font-size: 0.78rem; color: #92400e; }
+.verify-actions em { font-style: normal; font-size: 0.78rem; color: var(--warn-text); }
 
 /* ---------- auth modal ---------- */
 .modal-backdrop {
@@ -401,7 +464,7 @@ body {
 }
 .modal {
   position: relative;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 14px;
   padding: 26px 26px 20px;
   width: 100%;
@@ -441,8 +504,8 @@ body {
 }
 .submit-btn:hover { filter: brightness(1.08); }
 .submit-btn:disabled { opacity: 0.6; cursor: wait; }
-.form-error { margin: 0; color: #b91c1c; font-size: 0.84rem; }
-.form-notice { margin: 0; color: #15803d; font-size: 0.84rem; }
+.form-error { margin: 0; color: var(--danger); font-size: 0.84rem; }
+.form-notice { margin: 0; color: var(--success); font-size: 0.84rem; }
 .auth-switch {
   margin-top: 14px;
   display: flex;
@@ -531,7 +594,8 @@ body {
 .admin-table .row-actions { white-space: nowrap; }
 .admin-table .row-actions button {
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   border-radius: 6px;
   padding: 4px 10px;
   font-size: 0.8rem;
@@ -545,12 +609,12 @@ body {
 .status-summary { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 .status-chip {
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 0.76rem;
   cursor: pointer;
-  color: #374151;
+  color: var(--chip-text);
   font-variant-numeric: tabular-nums;
 }
 .status-chip:hover { border-color: var(--accent); color: var(--accent); }
@@ -603,8 +667,8 @@ body {
 .status-arcade h4 { margin: 0; font-size: 0.98rem; flex: 1; min-width: 0; }
 .price-chip {
   font-size: 0.76rem;
-  background: #fffbeb;
-  color: #92400e;
+  background: var(--warn-bg);
+  color: var(--warn-text);
   border-radius: 999px;
   padding: 2px 9px;
   white-space: nowrap;
@@ -647,8 +711,8 @@ body {
 .cab-head strong { font-size: 0.84rem; }
 .cab-side {
   font-size: 0.68rem;
-  background: #eef1f5;
-  color: #374151;
+  background: var(--chip-bg);
+  color: var(--chip-text);
   border-radius: 4px;
   padding: 0 5px;
 }
@@ -695,4 +759,18 @@ body {
 
 @media (max-width: 700px) {
   .mse-meta { grid-template-columns: 1fr; }
+
+  /* Compact header: stack the title, tabs and auth controls */
+  .app-header h1 { font-size: 1.2rem; }
+  .app-header p { font-size: 0.8rem; }
+  .header-row { flex-direction: column; align-items: stretch; gap: 8px; }
+  .view-tabs { padding-top: 0; }
+
+  /* Comfortable touch targets */
+  .view-tab-btn, .fav-toggle, .clear-btn, .login-btn { padding: 9px 14px; }
+  .game-chip { padding: 8px 14px; }
+  .radius-btn { padding: 8px 16px; }
+  .locate-btn { padding: 10px 18px; }
+  .status-chip { padding: 6px 12px; }
+  .admin-table .row-actions button { padding: 6px 12px; }
 }

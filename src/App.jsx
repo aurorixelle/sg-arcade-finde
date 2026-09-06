@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from "./auth/AuthContext.jsx";
 import AuthModal from "./auth/AuthModal.jsx";
 import VerifyBanner from "./auth/VerifyBanner.jsx";
 import { useArcades } from "./hooks/useArcades.js";
+import { useTheme } from "./hooks/useTheme.js";
 import FilterBar from "./components/FilterBar.jsx";
 import ArcadeCard from "./components/ArcadeCard.jsx";
 import MapView from "./components/MapView.jsx";
@@ -23,6 +24,7 @@ export default function App() {
 function Layout() {
   const { user, isAdmin, verified, favorites, firebaseReady, signOut, toggleFavorite } = useAuth();
   const { arcades, source } = useArcades();
+  const { theme, toggle: toggleTheme } = useTheme();
 
   const [view, setView] = useState("browse"); // browse | status | admin
   const [statusFocus, setStatusFocus] = useState(null); // arcade id to scroll to in the status view
@@ -154,6 +156,15 @@ function Layout() {
           </div>
 
           <div className="view-tabs">
+            <button
+              type="button"
+              className="view-tab-btn theme-toggle"
+              onClick={toggleTheme}
+              title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
             <button
               type="button"
               className={`view-tab-btn ${view === "browse" ? "active" : ""}`}
