@@ -125,6 +125,15 @@ exceptions live in `LOCATION_OVERRIDES` inside the script. Unmatched locations
 are skipped with a warning (e.g. Timezone Plaza Singapura — closed Aug 2026).
 After this baseline, statuses are maintained through the admin panel.
 
+When a game version changes everywhere (e.g. maimai 1.65-A → 1.65-B):
+
+```bash
+node scripts/set-version.mjs maimai 1.65-B --write   # dry run without --write
+```
+
+It reads targets from Firestore (so admin-added arcades are included) and
+merge-writes only the `version` field, then syncs `arcades.json`.
+
 ## Notes
 
 - Geolocation requires HTTPS or `localhost`.

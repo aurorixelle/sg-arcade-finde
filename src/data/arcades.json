@@ -35,7 +35,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Any button issues for the cabs here usually gets fixed very fast. Otherwise, please inform the spreadsheet maintainer if these button issues aren't fixed after a few days.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -200,7 +200,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "For this location, note that lifts and escalators are undergoing modernisation works resulting in inconvenience to those playing at this arcade.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -451,7 +451,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "All buttons re-padded for this outlet.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -574,7 +574,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "❌ Cabs are generally known to be in poor condition! ❌\n\nFans are installed above cabs; There is some cables on the floor exposed between cabs C1 and C2, PLEASE DO NOT STEP ON THEM OR TAMPER WITH THE POWER OUTLETS.\n\nFrom left to right: B2, B1, A2, A1, C2, C1.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -738,7 +738,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Fans are installed above the cabs.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -860,7 +860,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Fans are installed at the maimai area and you can adjust the speed.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -947,7 +947,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Fans are installed on both cabs.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1037,7 +1037,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1099,7 +1099,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "24 Aug 2026: ALL.Net authentication stuck at checking, waiting for technician.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1217,7 +1217,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "A note that the remarks placed next to the cab number in this spreadsheet for this outlet indicates where the cabs were transferred from. Additionally, Cab 3 (the Vivo cab) is closest to the entrance and faces DDR, while Cabs 1 and 2 face each other.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1307,7 +1307,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1369,7 +1369,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Cab is behind a pillar.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1481,7 +1481,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1541,7 +1541,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1629,7 +1629,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1689,7 +1689,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Cab 1 faces the glass and cab 2 faces the wall.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1766,7 +1766,7 @@
     ],
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1867,7 +1867,7 @@
     ],
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Accepts 100Y medals and member card; rates is 2 100Y-medals or 10 member card tokens.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -1940,7 +1940,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Fans are installed near the ceiling. Cab 1 is behind a pillar. Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2014,7 +2014,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Accepts 100Y medals and member card. Higher rates per game at 3 100Y-medals or 14 member card tokens.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2074,7 +2074,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only. Higher rates per game at 14 member card tokens.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2134,7 +2134,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Accepts medals and member card. Higher rates per game at 3 100Y-medals or 14 member card tokens.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2194,7 +2194,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2282,7 +2282,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2356,7 +2356,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Accepts medals and member card; still dispenses old medals. Rates at 3 old medals or 10 member card tokens.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2430,7 +2430,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2490,7 +2490,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2550,7 +2550,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Member card only.",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2638,7 +2638,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "",
         "asOf": "2026-08-30",
         "cabs": [
@@ -2712,7 +2712,7 @@
     },
     "machineStatus": {
       "maimai": {
-        "version": "1.65-A",
+        "version": "1.65-B",
         "notes": "Fans are installed above both machines, both sides",
         "asOf": "2026-08-30",
         "cabs": [

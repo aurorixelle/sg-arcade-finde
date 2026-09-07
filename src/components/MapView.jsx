@@ -24,6 +24,20 @@ function Recenter({ target, zoom }) {
   return null;
 }
 
+// On mobile the map pane can sit in display:none (List|Map segmented switch).
+// Leaflet computes its size as 0 while hidden — recalculate when shown.
+function InvalidateOnShow({ show }) {
+  const map = useMap();
+  useEffect(() => {
+    if (show) {
+      const t = setTimeout(() => map.invalidateSize(), 60);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [show, map]);
+  return null;
+}
+
 export default function MapView({
   arcades,
   userPos,
@@ -31,6 +45,7 @@ export default function MapView({
   selected,
   onSelect,
   focusTarget,
+  active = true,
 }) {
   const center = useMemo(() => userPos ?? { lat: 1.3521, lng: 103.8198 }, [userPos]);
 
@@ -58,6 +73,7 @@ export default function MapView({
       />
 
       <Recenter target={focusTarget} />
+      <InvalidateOnShow show={active} />
 
       {userPos && radius && (
         <Circle

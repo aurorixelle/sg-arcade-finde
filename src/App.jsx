@@ -10,8 +10,11 @@ import MapView from "./components/MapView.jsx";
 import NearMePanel from "./components/NearMePanel.jsx";
 import AdminPanel from "./components/AdminPanel.jsx";
 import StatusView from "./components/StatusView.jsx";
+import TabBar from "./components/TabBar.jsx";
+import BottomSheet from "./components/BottomSheet.jsx";
+import { IconList, IconMap } from "./components/icons.jsx";
 import { distanceM } from "./utils/geo.js";
-import { CHAIN_COLORS, CHAINS } from "./constants.js";
+import { CHAIN_COLORS, CHAINS, SHEET_URL } from "./constants.js";
 
 export default function App() {
   return (
@@ -29,6 +32,9 @@ function Layout() {
   const [view, setView] = useState("browse"); // browse | status | admin
   const [statusFocus, setStatusFocus] = useState(null); // arcade id to scroll to in the status view
   const [showAuth, setShowAuth] = useState(false);
+  const [showMore, setShowMore] = useState(false); // mobile "More" bottom sheet
+  const [mobilePane, setMobilePane] = useState("list"); // list | map (segmented control, mobile only)
+  const [filtersOpen, setFiltersOpen] = useState(false); // collapsible filters (mobile only)
   const [favoritesOnly, setFavoritesOnly] = useState(false);
 
   const [region, setRegion] = useState("");
@@ -68,6 +74,18 @@ function Layout() {
     setRegion(value);
     setPlanningArea(""); // planning area options change with region
   }
+
+  // Tapping the active non-browse tab again returns to browse
+  function selectView(v) {
+    setView((cur) => (cur === v && v !== "browse" ? "browse" : v));
+  }
+
+  const activeFilterCount =
+    (region ? 1 : 0) +
+    (planningArea ? 1 : 0) +
+    (chain ? 1 : 0) +
+    selectedGames.size +
+    (favoritesOnly ? 1 : 0);
 
   function locate() {
     if (!navigator.geolocation) {
@@ -142,14 +160,13 @@ function Layout() {
       <header className="app-header">
         <div className="header-row">
           <div className="header-title">
-            <h1>SG Arcade Finder</h1>
+            <div className="title-row">
+              <span className="logo-tile" aria-hidden="true">🕹️</span>
+              <h1>SG Arcade Finder</h1>
+            </div>
             <p>
               Rhythm game arcades in Singapore · {arcades.length} locations ·{" "}
-              <a
-                href="https://docs.google.com/spreadsheets/d/1yR7zAoR0DErE5iigS-VMBo4Cm5vlHP46gQsjW-t0MYc/htmlview#gid=306092234"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={SHEET_URL} target="_blank" rel="noreferrer">
                 maimai &amp; CHUNITHM SG public sheet
               </a>
             </p>
@@ -168,7 +185,7 @@ function Layout() {
             <button
               type="button"
               className={`view-tab-btn ${view === "browse" ? "active" : ""}`}
-              onClick={() => setView("browse")}
+              onClick={() => selectView("browse")}
             >
               Browse
             </button>
@@ -176,7 +193,7 @@ function Layout() {
               type="button"
               className={`view-tab-btn ${view === "status" ? "active" : ""}`}
               onClick={() => {
-                setView("status");
+                selectView("status");
                 setStatusFocus(null);
               }}
             >
@@ -186,7 +203,7 @@ function Layout() {
               <button
                 type="button"
                 className={`view-tab-btn ${view === "admin" ? "active" : ""}`}
-                onClick={() => setView(view === "admin" ? "browse" : "admin")}
+                onClick={() => selectView("admin")}
               >
                 Admin
               </button>
@@ -246,6 +263,9 @@ function Layout() {
             onChainChange={setChain}
             onToggleGame={toggleGame}
             onReset={resetFilters}
+            open={filtersOpen}
+            onToggle={() => setFiltersOpen((o) => !o)}
+            activeCount={activeFilterCount}
           />
 
           <NearMePanel
@@ -263,8 +283,29 @@ function Layout() {
             }}
           />
 
+          <div className="pane-switch" role="tablist" aria-label="List or map">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mobilePane === "list"}
+              className={mobilePane === "list" ? "active" : ""}
+              onClick={() => setMobilePane("list")}
+            >
+              <IconList size={16} /> List
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mobilePane === "map"}
+              className={mobilePane === "map" ? "active" : ""}
+              onClick={() => setMobilePane("map")}
+            >
+              <IconMap size={16} /> Map
+            </button>
+          </div>
+
           <main className="app-main">
-            <section className="arcade-list" ref={listRef}>
+            <section className={`arcade-list pane-list ${mobilePane === "map" ? "pane-hidden" : ""}`} ref={listRef}>
               <div className="result-count">
                 {results.length} arcade{results.length === 1 ? "" : "s"}
                 {radius && userPos ? ` within ${radius / 1000} km` : ""}
@@ -293,14 +334,18 @@ function Layout() {
               ))}
             </section>
 
-            <section className="map-pane">
+            <section className={`map-pane pane-map ${mobilePane === "list" ? "pane-hidden" : ""}`}>
               <MapView
                 arcades={results.map((r) => r.arcade)}
                 userPos={userPos}
                 radius={radius}
                 selected={selected}
-                onSelect={setSelected}
+                onSelect={(name) => {
+                  setSelected(name);
+                  setMobilePane("list"); // marker tap jumps to the list entry
+                }}
                 focusTarget={focusTarget}
+                active={mobilePane === "map"}
               />
               <div className="map-legend">
                 {chains.map((c) => (
@@ -313,6 +358,80 @@ function Layout() {
             </section>
           </main>
         </>
+      )}
+
+      <TabBar
+        view={view}
+        isAdmin={isAdmin}
+        onSelect={(v) => {
+          setShowMore(false);
+          selectView(v);
+        }}
+        onOpenMore={() => setShowMore(true)}
+      />
+
+      {showMore && (
+        <BottomSheet title="More" onClose={() => setShowMore(false)}>
+          <div className="more-sheet">
+            <button type="button" className="more-row" onClick={toggleTheme}>
+              <span className="more-icon" aria-hidden="true">{theme === "dark" ? "☀️" : "🌙"}</span>
+              {theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            </button>
+
+            {!firebaseReady ? null : !user ? (
+              <button
+                type="button"
+                className="more-row"
+                onClick={() => {
+                  setShowMore(false);
+                  setShowAuth(true);
+                }}
+              >
+                <span className="more-icon" aria-hidden="true">🔑</span>
+                Sign in / Register
+              </button>
+            ) : (
+              <>
+                <div className="more-account">
+                  <strong>{user.email}</strong>
+                  {!verified && <em> (unverified)</em>}
+                </div>
+                {verified && (
+                  <button
+                    type="button"
+                    className={`more-row ${favoritesOnly ? "on" : ""}`}
+                    onClick={() => setFavoritesOnly(!favoritesOnly)}
+                  >
+                    <span className="more-icon" aria-hidden="true">❤</span>
+                    Favorites only {favoritesOnly ? "· on" : "· off"}
+                  </button>
+                )}
+                {isAdmin && (
+                  <button
+                    type="button"
+                    className="more-row"
+                    onClick={() => {
+                      setShowMore(false);
+                      setView("admin");
+                    }}
+                  >
+                    <span className="more-icon" aria-hidden="true">🛠</span>
+                    Admin panel
+                  </button>
+                )}
+                <button type="button" className="more-row" onClick={signOut}>
+                  <span className="more-icon" aria-hidden="true">↩</span>
+                  Sign out
+                </button>
+              </>
+            )}
+
+            <a className="more-row" href={SHEET_URL} target="_blank" rel="noreferrer">
+              <span className="more-icon" aria-hidden="true">📊</span>
+              maimai &amp; CHUNITHM SG public sheet ↗
+            </a>
+          </div>
+        </BottomSheet>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import { GAMES, REGIONS } from "../constants.js";
+import { IconChevron } from "./icons.jsx";
 
 export default function FilterBar({
   arcades,
@@ -12,6 +13,9 @@ export default function FilterBar({
   onChainChange,
   onToggleGame,
   onReset,
+  open = true,
+  onToggle,
+  activeCount = 0,
 }) {
   // Planning areas within the selected region (or all areas when no region)
   const areaOptions = [...new Set(
@@ -26,7 +30,14 @@ export default function FilterBar({
   }
 
   return (
-    <div className="filter-bar">
+    <div className={`filter-bar ${open ? "open" : ""}`}>
+      {/* Mobile-only collapse toggle; hidden on desktop where filters stay open */}
+      <button type="button" className="filter-toggle" onClick={onToggle} aria-expanded={open}>
+        <IconChevron size={16} className={open ? "chevron-up" : ""} />
+        Filters
+        {activeCount > 0 && <span className="filter-count">{activeCount}</span>}
+      </button>
+
       <div className="filter-row">
         <label className="filter-field">
           <span>Region</span>

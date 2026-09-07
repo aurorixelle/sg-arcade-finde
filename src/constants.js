@@ -15,6 +15,10 @@ export const GAMES = [
 
 export const CHAINS = ["Virtualand", "Paco FunWorld", "Timezone", "Cow Play Cow Moo", "Zone X"];
 
+// Community source spreadsheet (linked from the header and the mobile More sheet)
+export const SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/1yR7zAoR0DErE5iigS-VMBo4Cm5vlHP46gQsjW-t0MYc/htmlview";
+
 export const CHAIN_COLORS = {
   Virtualand: "#e05353",
   "Paco FunWorld": "#e58f2a",
